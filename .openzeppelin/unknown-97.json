@@ -1,0 +1,310 @@
+{
+  "manifestVersion": "3.2",
+  "admin": {
+    "address": "0x8C2Faf9c5E3661e909829Af751C188E5997Ff006",
+    "txHash": "0xa90cf7c9889aa67871eafbf42c7016e6af9eb98706d28d1a7cdb4acd9ba25a04"
+  },
+  "proxies": [
+    {
+      "address": "0x6508643f624689398bcf9Ce55B766a9BC95e2802",
+      "txHash": "0x3888a57b681dbb9b21aa43b3811b10ad1d291435d0801fc63b0095349bdcc718",
+      "kind": "transparent"
+    }
+  ],
+  "impls": {
+    "08280328c475fa1b525e6bc9d51a791ee5a64492cfaaabaf9c23cc738308127f": {
+      "address": "0xe410905965904ae156475a852fA65DF22375F80F",
+      "txHash": "0xbe0ba1f821327380b4f00d457dceed1b52e584f3fd5c358b279cd2c13acc3aef",
+      "layout": {
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:39"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:44"
+          },
+          {
+            "label": "_status",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_uint256",
+            "contract": "ReentrancyGuardUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:38"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "ReentrancyGuardUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:74"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "101",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "102",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:87"
+          },
+          {
+            "label": "tokenAddress",
+            "offset": 0,
+            "slot": "151",
+            "type": "t_address",
+            "contract": "BitCoinDashStaking",
+            "src": "contracts/BitCoinDashStaking.sol:17"
+          },
+          {
+            "label": "TreasuryWallet",
+            "offset": 0,
+            "slot": "152",
+            "type": "t_address_payable",
+            "contract": "BitCoinDashStaking",
+            "src": "contracts/BitCoinDashStaking.sol:19"
+          },
+          {
+            "label": "MarketingWallet",
+            "offset": 0,
+            "slot": "153",
+            "type": "t_address_payable",
+            "contract": "BitCoinDashStaking",
+            "src": "contracts/BitCoinDashStaking.sol:20"
+          },
+          {
+            "label": "CharityWallet",
+            "offset": 0,
+            "slot": "154",
+            "type": "t_address_payable",
+            "contract": "BitCoinDashStaking",
+            "src": "contracts/BitCoinDashStaking.sol:21"
+          },
+          {
+            "label": "ChimneyWallet",
+            "offset": 0,
+            "slot": "155",
+            "type": "t_address_payable",
+            "contract": "BitCoinDashStaking",
+            "src": "contracts/BitCoinDashStaking.sol:22"
+          },
+          {
+            "label": "AdminWallet",
+            "offset": 0,
+            "slot": "156",
+            "type": "t_address_payable",
+            "contract": "BitCoinDashStaking",
+            "src": "contracts/BitCoinDashStaking.sol:23"
+          },
+          {
+            "label": "LeadersWallet",
+            "offset": 0,
+            "slot": "157",
+            "type": "t_array(t_address)10_storage",
+            "contract": "BitCoinDashStaking",
+            "src": "contracts/BitCoinDashStaking.sol:24"
+          },
+          {
+            "label": "BITD_TOKEN",
+            "offset": 0,
+            "slot": "167",
+            "type": "t_contract(IERC20)622",
+            "contract": "BitCoinDashStaking",
+            "src": "contracts/BitCoinDashStaking.sol:25"
+          },
+          {
+            "label": "REF_BONUSES",
+            "offset": 0,
+            "slot": "168",
+            "type": "t_array(t_uint8)dyn_storage",
+            "contract": "BitCoinDashStaking",
+            "src": "contracts/BitCoinDashStaking.sol:28"
+          },
+          {
+            "label": "users",
+            "offset": 0,
+            "slot": "169",
+            "type": "t_mapping(t_address,t_struct(User)712_storage)",
+            "contract": "BitCoinDashStaking",
+            "src": "contracts/BitCoinDashStaking.sol:34"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_address_payable": {
+            "label": "address payable",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_address)10_storage": {
+            "label": "address[10]",
+            "numberOfBytes": "320"
+          },
+          "t_array(t_struct(Miner)689_storage)dyn_storage": {
+            "label": "struct BitCoinDashStaking.Miner[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint256)10_storage": {
+            "label": "uint256[10]",
+            "numberOfBytes": "320"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_array(t_uint8)dyn_storage": {
+            "label": "uint8[]",
+            "numberOfBytes": "32"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_contract(IERC20)622": {
+            "label": "contract IERC20",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_struct(User)712_storage)": {
+            "label": "mapping(address => struct BitCoinDashStaking.User)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Miner)689_storage": {
+            "label": "struct BitCoinDashStaking.Miner",
+            "members": [
+              {
+                "label": "stakestart",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "dailyReward",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "minerLastFed",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "miningStatus",
+                "type": "t_bool",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "index",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "4"
+              }
+            ],
+            "numberOfBytes": "160"
+          },
+          "t_struct(User)712_storage": {
+            "label": "struct BitCoinDashStaking.User",
+            "members": [
+              {
+                "label": "userAddress",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "bonus",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "referrer",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "firstDownlineTime",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "lastDownLineTime",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "4"
+              },
+              {
+                "label": "monthlyReferralCount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "5"
+              },
+              {
+                "label": "bonusFromDirectReferral",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "6"
+              },
+              {
+                "label": "miners",
+                "type": "t_array(t_struct(Miner)689_storage)dyn_storage",
+                "offset": 0,
+                "slot": "7"
+              },
+              {
+                "label": "levels",
+                "type": "t_array(t_uint256)10_storage",
+                "offset": 0,
+                "slot": "8"
+              }
+            ],
+            "numberOfBytes": "576"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    }
+  }
+}
