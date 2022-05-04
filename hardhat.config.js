@@ -6,8 +6,23 @@ require('dotenv').config();
 
 
 module.exports = {
-  solidity: "0.8.10",
+  solidity: {
+    compilers: [
+      {
+        version: "0.8.10",
+      },
+      {
+        version: "0.6.6",
+        settings: {},
+      },
+    ],
+  },
   networks: {
+    localhost: {
+          url: "http://localhost:8545"
+      //         notice no mnemonic here? it will just use account 0 of the hardhat node to deploy
+      //  you can put in a mnemonic here to set the deployer locally)
+           },       
     ropsten: {
       url: `https://ropsten.infura.io/v3/${process.env.INFURA_API_KEY}`,
       accounts: [process.env.PRI_KEY],

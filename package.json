@@ -8,6 +8,7 @@
     "deploy_contract": "hardhat run --network rinkeby scripts/deploy_contract.js",
     "upgrade_contract": "hardhat run --network rinkeby scripts/upgrade_contract.js",
     "deploy_test": "hardhat run --network bscTestnet scripts/deploy_contract.js",
+    "deploy_local": "hardhat run --network localhost scripts/deploy_contract.js",
     "deploy_main": "hardhat run --network bscMainnet scripts/deploy_contract.js"
   },
   "author": "",
@@ -20,8 +21,11 @@
     "hardhat": "^2.8.0"
   },
   "dependencies": {
+    "@chainlink/contracts": "^0.4.0",
     "@openzeppelin/contracts": "^4.4.1",
     "@openzeppelin/contracts-upgradeable": "^4.4.1",
+    "@uniswap/v2-core": "^1.0.1",
+    "@uniswap/v2-periphery": "^1.1.0-beta.0",
     "dotenv": "^16.0.0"
   }
 }
