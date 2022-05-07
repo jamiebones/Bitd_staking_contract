@@ -5,43 +5,13 @@ import "hardhat/console.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
-import {IERC20} from "@openzeppelin/contracts/interfaces/IERC20.sol";
+import {IERC20Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol";
 
- import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
-
-
- 
+import {SafeERC20Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/utils/SafeERC20Upgradeable.sol";
 
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
 interface IUniswapV2Pair {
-    function name() external pure returns (string memory);
-
-    function decimals() external pure returns (uint8);
-
-    function totalSupply() external view returns (uint256);
-
-    function balanceOf(address owner) external view returns (uint256);
-
-    function allowance(address owner, address spender)
-        external
-        view
-        returns (uint256);
-
-    function nonces(address owner) external view returns (uint256);
-
-    function permit(
-        address owner,
-        address spender,
-        uint256 value,
-        uint256 deadline,
-        uint8 v,
-        bytes32 r,
-        bytes32 s
-    ) external;
-
-    function factory() external view returns (address);
-
     function token0() external view returns (address);
 
     function token1() external view returns (address);
@@ -54,13 +24,9 @@ interface IUniswapV2Pair {
             uint112 reserve1,
             uint32 blockTimestampLast
         );
-
-    function price0CumulativeLast() external view returns (uint256);
-
-    function price1CumulativeLast() external view returns (uint256);
-
-    function kLast() external view returns (uint256);
 }
+
+contract ApprovedTokenSpend {}
 
 contract BitCoinDashStaking is
     Initializable,
@@ -68,7 +34,13 @@ contract BitCoinDashStaking is
     OwnableUpgradeable
 {
     using SafeMath for uint256;
-    using SafeERC20 for IERC20;
+    using SafeERC20Upgradeable for IERC20Upgradeable;
+
+    //events Staking
+    event RentingMiner(address indexed user, uint256 amount, uint256 timestamp);
+    event FeedMiner(address indexed user, uint256 amount, uint256 timestamp);
+    event ClaimReward(address indexed user, uint256 amount, uint256 timestamp);
+
     address private tokenAddress;
     //wallet address
     address payable public TreasuryWallet;
@@ -77,7 +49,7 @@ contract BitCoinDashStaking is
     address payable public ChimneyWallet;
     address payable public AdminWallet;
     address[10] public LeadersWallet;
-    IERC20 private BITD_TOKEN;
+    IERC20Upgradeable private BITD_TOKEN;
     IUniswapV2Pair private UNISWAP_PAIR;
 
     //constant
@@ -86,13 +58,12 @@ contract BitCoinDashStaking is
     uint256 private constant PERCENT_DIVIDER = 100;
     uint256 private constant ONE_PERCENT = 1;
     uint256 private constant TAXRATE = 10;
-    uint256 private constant DECIMAL = 10 ** 9;
-    uint256 private constant BASE = 10 ** 18;
+    uint256 private constant DECIMAL = 10**9;
+    uint256 private constant BASE = 10**18;
 
     uint256 private rentMinerFee;
     uint256 private feedMinerFee;
-
-    
+    uint256 private dailyPercentage;
 
     //mainnet address: 0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE;
     //testnet address: 0x2514895c72f50D8bd4B4F9b1110F0D6bD2c97526;
@@ -105,16 +76,17 @@ contract BitCoinDashStaking is
 
     struct Miner {
         uint256 stakestart;
-        uint256 dailyReward;
         uint256 minerLastFed; //7 days
         uint256 index;
+        uint256 rentFee;
+        uint256 dailyPercent;
         bool miningStatus;
         bool expired;
     }
 
     struct User {
         address userAddress;
-        uint256 bonus;
+        uint256 bonus; //this is gotten from REF_BONUSES
         address referrer;
         uint256 firstDownlineTime;
         uint256 lastDownLineTime;
@@ -132,9 +104,7 @@ contract BitCoinDashStaking is
         address payable _charityWallet,
         address payable _chimneyWallet,
         address payable _adminWallet,
-        address payable[10] calldata _leadersWallet,
-        uint256 _feedMinerFee,
-        uint256 _rentMinerFee
+        address payable[10] calldata _leadersWallet
     ) external initializer {
         __Ownable_init();
         __ReentrancyGuard_init();
@@ -147,10 +117,8 @@ contract BitCoinDashStaking is
         AdminWallet = _adminWallet;
         LeadersWallet = _leadersWallet;
         REF_BONUSES = [10, 3, 3, 2, 2, 1, 1, 1, 1, 1];
-        BITD_TOKEN = IERC20(_tokenAddress);
+        BITD_TOKEN = IERC20Upgradeable(_tokenAddress);
         priceFeed = AggregatorV3Interface(BNB_TO_USD);
-        feedMinerFee = _feedMinerFee;
-        rentMinerFee = _rentMinerFee;
     }
 
     //user functions
@@ -162,15 +130,14 @@ contract BitCoinDashStaking is
         //tokenAmount is coming in as a 1eth 1e18
         //get value of token needed
         uint256 tokenExpected = calculateTokenToDollarsNeeded(rentMinerFee);
-        require( tokenAmount >= tokenExpected, "Token amount is not correct");
-        require(tokenAmount > 0, "tokenAmount must be greater than 0");
+        require(tokenAmount >= tokenExpected, "Token amount is not correct");
+        require(tokenAmount > 0, "token Amount must be greater than 0");
         require(
             tokenAmount <= BITD_TOKEN.balanceOf(msg.sender),
             "amount not enough"
         );
 
         //approve the token
-        BITD_TOKEN.safeApprove(address(this), tokenAmount);
         BITD_TOKEN.safeTransferFrom(msg.sender, address(this), tokenAmount);
 
         //get the user
@@ -178,8 +145,9 @@ contract BitCoinDashStaking is
 
         Miner memory miner = Miner({
             stakestart: block.timestamp,
-            dailyReward: 7, //7 days profit
             minerLastFed: block.timestamp,
+            rentFee: rentMinerFee,
+            dailyPercent: dailyPercentage,
             index: 0,
             miningStatus: true,
             expired: false
@@ -212,6 +180,8 @@ contract BitCoinDashStaking is
             PERCENT_DIVIDER
         );
 
+        //referral bonus is 25% of the token amount
+        uint256 referralBonus = onePercentFee.mul(25);
         //distribute the onepercent to those eligible
 
         BITD_TOKEN.safeTransfer(AdminWallet, onePercentFee.mul(20));
@@ -225,17 +195,17 @@ contract BitCoinDashStaking is
         for (uint256 i = 0; i < _leadersWalletLength; i++) {
             BITD_TOKEN.safeTransfer(LeadersWallet[i], onePercentFee.mul(2));
         }
-
-        _settleUplineMiners(referral, onePercentFee);
+        emit RentingMiner(msg.sender, tokenAmount, block.timestamp);
+        _settleUplineMiners(referral, referralBonus);
     }
 
-    function _settleUplineMiners(address referral, uint256 onePercentFee)
+    function _settleUplineMiners(address referral, uint256 referralBonus)
         private
     {
         //get the storage users
         User storage user = users[msg.sender];
         //referral address not empty
-        if (referral != address(0)) {
+        if (referral != address(0) && _checkIfUserInSystem(referral)) {
             //set the referral here
             user.referrer = referral;
             //add the bonus to the user referal count
@@ -287,7 +257,9 @@ contract BitCoinDashStaking is
                 if (upline == address(0)) {
                     upline = AdminWallet;
                 }
-                uint256 amount = onePercentFee.mul(REF_BONUSES[i]);
+                //multiplying by 4 to round the percent to 100
+                //bonus is the token amount they are due
+                uint256 amount = referralBonus.mul(REF_BONUSES[i]).mul(4);
                 users[upline].bonus = users[upline].bonus.add(amount);
                 upline = users[upline].referrer;
             }
@@ -300,12 +272,13 @@ contract BitCoinDashStaking is
     {
         //get the user and the miner you want to feed
         uint256 tokenExpected = calculateTokenToDollarsNeeded(feedMinerFee);
-        require(tokenExpected == _amount, "Token amount is not correct");
-        require(!_checkIfUserInSystem(), "user not in system");
+        require(tokenExpected >= _amount, "Token amount is not correct");
+        require(_checkIfUserInSystem(msg.sender), "user not in system");
         User storage _user = users[msg.sender];
         //miner to feed
-        Miner memory _miner = _user.miners[_minerIndex];
+        Miner storage _miner = _user.miners[_minerIndex];
         //get miner and check if we can feed
+        require(!_checkIfMinerExpired(_miner), "Miner has expired");
         bool canFeed = _checkMinerCanFeed(_miner.minerLastFed);
         require(canFeed, "can't feed the miner now");
         //we can feed here we need to take the amount
@@ -314,24 +287,36 @@ contract BitCoinDashStaking is
             _amount <= BITD_TOKEN.balanceOf(msg.sender),
             "amount not enough"
         );
-        //approve the token to be safesafeTransferred
-        BITD_TOKEN.safeApprove(address(this), _amount);
         BITD_TOKEN.safeTransferFrom(msg.sender, address(this), _amount);
 
         _miner.miningStatus = true;
+        //update the last feed time.
         _miner.minerLastFed = block.timestamp;
-        _miner.dailyReward = _miner.dailyReward.add(7);
-
         //add the miner back to the feed
         _user.miners[_minerIndex] = _miner;
+        emit FeedMiner(msg.sender, _amount, block.timestamp);
     }
 
-    function _checkIfUserInSystem() private view returns (bool) {
+    function _checkIfUserInSystem(address _userAddress)
+        private
+        view
+        returns (bool)
+    {
         //get the user
-        User storage _user = users[msg.sender];
+        User storage _user = users[_userAddress];
         //check if the user is in the system
         bool isInSystem = _user.userAddress != address(0);
         return isInSystem;
+    }
+
+    function _checkIfMinerExpired(Miner memory _miner)
+        private
+        pure
+        returns (bool)
+    {
+        //check if miner is expired
+        return _miner.expired;
+    
     }
 
     function _checkIfReferralWithin30days(uint256 firstReferralTime)
@@ -362,64 +347,61 @@ contract BitCoinDashStaking is
         }
     }
 
-    function _isMinerActive(uint256 _lastFeeding)
-        private
-        view
-        returns (bool)
-    {
+    function _isMinerActive(uint256 _lastFeeding) private view returns (bool) {
         //check if feeding is is within 7 days
         uint256 feedingDays = _lastFeeding.add(7 days);
-        if (feedingDays < (block.timestamp)) {
+        if (block.timestamp < feedingDays) {
             return true;
         } else {
             return false;
         }
     }
 
-    function _updateMinerStatus(
-        bool status,
-        address _user,
-        Miner memory _miner
-    ) private {
-        //update miner status
-        User storage user = users[_user];
-        uint256 index = _miner.index;
-        _miner.miningStatus = status;
-        user.miners[index] = _miner;
+    function _calNumberOfDays(uint256 _lastFeeding) private view returns (uint256) {
+        return (block.timestamp - _lastFeeding) / 60 / 60 / 24;
     }
 
     function claimReward() public nonReentrant {
-         //token price 1e26
-        
-        require(!_checkIfUserInSystem(), "user not in system");
+        //token price 1e26
+        require(_checkIfUserInSystem(msg.sender), "user not in system");
         User storage user = users[msg.sender];
         //check bonus
         uint256 _bonus = user.bonus;
+        uint256 _directReferral = user.bonusFromDirectReferral;
         //get value from miners
         uint256 minersLength = user.miners.length;
         uint256 totalMinerReward = 0;
         for (uint256 i = 0; i < minersLength; i++) {
             Miner storage miner = user.miners[i];
             uint256 minerStartTime = miner.stakestart;
-            totalMinerReward = totalMinerReward.add(miner.dailyReward);
+
+            uint256 daysOfMinning = _calNumberOfDays(miner.minerLastFed);
+            uint256 minerReturnsAmount = ( miner.dailyPercent * miner.rentFee * daysOfMinning ) / 100;
+            totalMinerReward += minerReturnsAmount;
+
+            //cal the percentage of the mining
             if (block.timestamp > minerStartTime.add(365 days)) {
                 //miner should expire here
                 //index i will come back to this later
-                user.miners[i].expired  = true;
+                user.miners[i].expired = true;
             } else {
-                miner.dailyReward = 0;
                 miner.minerLastFed = 0;
                 miner.miningStatus = false;
             }
         }
         require(totalMinerReward > 0, "no miner reward to claim");
-        uint256 tokenForReward = calculateTokenToDollarsNeeded(totalMinerReward);
-        //each bonus is equal to 100 dollars
-        uint256 bonusTokenForReward = calculateTokenToDollarsNeeded(_bonus * 100);
+        uint256 tokenForReward = calculateTokenToDollarsNeeded(
+            totalMinerReward
+        );
+        //each direct referral is == to 100 dolars. bonus is equal to 100 dollars
+        uint256 directReferralReward = calculateTokenToDollarsNeeded(
+            _directReferral * 100
+        );
         //tokenPerDollar is the amount of token per dollar
-        uint256 totalToken = tokenForReward + (bonusTokenForReward);
+        uint256 totalToken = tokenForReward + directReferralReward + _bonus;
         //perform the calculation here and know what to transfer
 
+        //taxrate = 10%
         uint256 tax = totalToken.mul(TAXRATE).div(PERCENT_DIVIDER);
         uint256 amountToTransfer = totalToken.mul(90).div(PERCENT_DIVIDER);
 
@@ -444,7 +426,7 @@ contract BitCoinDashStaking is
         BITD_TOKEN.safeTransfer(CharityWallet, charityFund);
         BITD_TOKEN.safeTransfer(ChimneyWallet, chimneyFund);
         BITD_TOKEN.safeTransfer(msg.sender, amountToTransfer);
-
+        emit ClaimReward(msg.sender, amountToTransfer, block.timestamp);
     }
 
     function getContractTokenBalance() public view returns (uint256) {
@@ -460,18 +442,11 @@ contract BitCoinDashStaking is
     }
 
     // calculate price based on pair reserves
-    function getTokenPrice()
-        public
-        view
-        returns (
-            uint256
-        )
-    {
+    function getTokenPrice() public view returns (uint256) {
         (uint256 token, uint256 wbnb, ) = UNISWAP_PAIR.getReserves();
         //get token price in wbnb
         //peform the multiplication bnb / 1e18 / token / 1e9
-        uint reserves = (10 ** 18 * (10 **9 * wbnb)  / ( 10**18 * token ));
-        
+        uint256 reserves = ((10**18 * (10**9 * wbnb)) / (10**18 * token));
 
         int256 bnbPrice = _getLatestPriceBNBTOUSD();
 
@@ -480,108 +455,162 @@ contract BitCoinDashStaking is
         return (priceInDollars); //return decimal is in 10**26
     }
 
-       
-  
     function calculateTokenToDollarsNeeded(uint256 _dollarsAmount)
         public
         view
         returns (uint256 tokens)
     {
         //1e26 because getToken returns value in 10**26
-       tokens = DECIMAL * (_dollarsAmount * 10 ** 26) / getTokenPrice();
-
+        tokens = (DECIMAL * (_dollarsAmount * 10**26)) / getTokenPrice();
     }
 
     function _getLatestPriceBNBTOUSD() private view returns (int256) {
         (
             ,
             /*uint80 roundID*/
-            int256 price, /*uint startedAt*/ /*uint timeStamp*/
+            int256 price, /*uint startedAt*/ /*uint timeStamp*/ /*uint80 answeredInRound*/
             ,
             ,
 
-        ) = /*uint80 answeredInRound*/
-            priceFeed.latestRoundData();
+        ) = priceFeed.latestRoundData();
         return price;
     }
 
-    //admin stuffs 
+    //admin stuffs
 
-    function setMinerBaseFee(uint _fee) public onlyOwner {
+    function setMinerBaseFee(uint256 _fee) public onlyOwner {
         rentMinerFee = _fee;
     }
 
-    function setMinerFeedingFee(uint _fee) public onlyOwner {
+    function setMinerFeedingFee(uint256 _fee) public onlyOwner {
         feedMinerFee = _fee;
     }
 
-    function viewUserEarning () public view returns (uint256 total ) {
-        User storage user = users[msg.sender];
+    function setMinerDailyPercentage(uint256 _percentage) public onlyOwner {
+        dailyPercentage = _percentage;
+    }
+
+
+    function viewUserEarning() public view returns (uint256, uint256, uint256 ) {
+        User memory user = users[msg.sender];
         require(user.userAddress != address(0), "user not in system");
         //lets find the token balance of the user earned
+        uint256 _directbonus = user.bonusFromDirectReferral;
         uint256 _bonus = user.bonus;
         //get value from miners
         uint256 minersLength = user.miners.length;
         uint256 totalMinerReward = 0;
         for (uint256 i = 0; i < minersLength; i++) {
             Miner memory miner = user.miners[i];
-            totalMinerReward = totalMinerReward.add(miner.dailyReward);  
+            uint256 daysOfMinning = _calNumberOfDays(miner.minerLastFed);
+            uint256 minerReturnsAmount = ( miner.dailyPercent * miner.rentFee * daysOfMinning ) / 100;
+            totalMinerReward += minerReturnsAmount;
         }
-        uint256 tokenForReward = calculateTokenToDollarsNeeded(totalMinerReward);
-        uint256 bonusReward = calculateTokenToDollarsNeeded(_bonus * 100);
+        //dollar amount of token
+        uint256 tokenForReward = calculateTokenToDollarsNeeded(
+            totalMinerReward
+        );
+        //direct bonus reward
+        uint256 bonusReward = calculateTokenToDollarsNeeded(_directbonus * 100);
 
-        total = tokenForReward + bonusReward;
+        
+        //tokenForReward => daily tokens
+        //bonusReward => direct referral bonus
+        //bonus => bonus from referrals
+        return (tokenForReward, bonusReward, _bonus);
+  
     }
 
-    function viewAnyUserEarning (address _userAddress) public onlyOwner view returns (uint256 total ) {
-        User storage user = users[_userAddress];
+    function viewAnyUserEarning(address _userAddress)
+        public
+        view
+        onlyOwner
+        returns (uint256, uint256, uint256 )
+    {
+        User memory user = users[_userAddress];
         require(user.userAddress != address(0), "user not in system");
         //lets find the token balance of the user earned
+        uint256 _directbonus = user.bonusFromDirectReferral;
         uint256 _bonus = user.bonus;
         //get value from miners
         uint256 minersLength = user.miners.length;
         uint256 totalMinerReward = 0;
         for (uint256 i = 0; i < minersLength; i++) {
             Miner memory miner = user.miners[i];
-            totalMinerReward = totalMinerReward.add(miner.dailyReward);  
+            uint256 daysOfMinning = _calNumberOfDays(miner.minerLastFed);
+            uint256 minerReturnsAmount = ( miner.dailyPercent * miner.rentFee * daysOfMinning ) / 100;
+            totalMinerReward += minerReturnsAmount;
         }
-        uint256 tokenForReward = calculateTokenToDollarsNeeded(totalMinerReward);
-        uint256 bonusReward = calculateTokenToDollarsNeeded(_bonus * 100);
+        //dollar amount of token
+        uint256 tokenForReward = calculateTokenToDollarsNeeded(
+            totalMinerReward
+        );
+        //direct bonus reward
+        uint256 bonusReward = calculateTokenToDollarsNeeded(_directbonus * 100);
 
-        total = tokenForReward + bonusReward;
+       // uint256 total = tokenForReward + bonusReward + _bonus;
+       
+        //tokenForReward => daily tokens
+        //bonusReward => direct referral bonus
+        //bonus => bonus from referrals
+        return (tokenForReward, bonusReward, _bonus);
     }
 
-    function viewUserActiveMiners(address _userAddress) public view returns (Miner[] memory ) {
+    function viewUserActiveMiners(address _userAddress)
+        public
+        view
+        returns (Miner[] memory)
+    {
         User storage user = users[_userAddress];
         require(user.userAddress != address(0), "user not in system");
         uint256 minersLength = user.miners.length;
         uint256 loopIndex = 0;
         uint256 _totalLength = 0;
-        for (loopIndex; loopIndex < minersLength; loopIndex ++) {
+        for (loopIndex; loopIndex < minersLength; loopIndex++) {
             Miner memory miner = user.miners[loopIndex];
-            if ( _isMinerActive(miner.minerLastFed)) {
-                _totalLength ++;
+            if (_isMinerActive(miner.minerLastFed)) {
+                _totalLength++;
             }
         }
         Miner[] memory activeMiners = new Miner[](_totalLength);
         uint256 _index = 0;
-          for (loopIndex; loopIndex < minersLength; loopIndex ++) {
-            Miner memory miner = user.miners[loopIndex];
-            if ( _isMinerActive(miner.minerLastFed)) {
+        uint256 i = 0;
+        for (i; i < minersLength; i++) {
+            Miner memory miner = user.miners[i];
+            if (_isMinerActive(miner.minerLastFed)) {
                 activeMiners[_index] = miner;
-                _index ++;
+                _index++;
             }
         }
         return activeMiners;
     }
 
-    function getUserDetails(address _address ) public view returns (User memory ){
+    function getUserDetails(address _address)
+        public
+        view
+        returns (User memory)
+    {
         User storage user = users[_address];
         require(user.userAddress != address(0), "user not in system");
         return user;
     }
 
-    
+    function transferToken(address _to, uint256 _amount) public onlyOwner {
+        BITD_TOKEN.safeTransfer(_to, _amount);
+    }
+
+    function approve(uint256 _amount ) public {
+        BITD_TOKEN.safeIncreaseAllowance(address(this), _amount);
+    }
+
+    function withdrawTokenFromContract() public onlyOwner {
+        uint assetBalance;
+        address self = address(this);
+        assetBalance = self.balance;
+        payable(msg.sender).transfer(assetBalance);
+    }
+
+    receive() external payable {}
 }
 
 library SafeMath {
@@ -647,16 +676,11 @@ library SafeMath {
 
 //wbnb / token = 0.00004945213367150238
 
-
 //49,452,133,671,502.38
 
 //38,200,000,000
-
 
 //token -> 11180262490499 / 1e9 = 11,180.262490499
 //wbnb -> 559229606710777545 /1e18 = 0.559229606710777545 bnb
 
 //result wbnb / token = 0.00005001936288937862 * 1e18 = 50,019,362,889,378.62
-
-
-

@@ -1,40 +1,20 @@
 {
   "manifestVersion": "3.2",
   "admin": {
-    "address": "0x3bf13522b3e3f619eCAe07391389261B48780F87",
-    "txHash": "0x0eb3283d6ba9af6bd994d5cfea6f528105ac93da0e71824d398d31fc84993412"
+    "address": "0x05688451b7dA2b32c79C0bc6F9018220666c9B1C",
+    "txHash": "0xd23bd0aacfb48a0498fd7f6687b3f0272254c8b8ce925e41f198bff10a7c43e3"
   },
   "proxies": [
     {
-      "address": "0x2bd82CE5de61a9a206eA884cFA688C1d879aB624",
-      "txHash": "0x78dd6f6b66f6df50a0790610e4b5e560ab1a975fe0404595aad1a1b16a4496e6",
-      "kind": "transparent"
-    },
-    {
-      "address": "0xf28E70EDAe0D7f7Bf791D117E7B276fa1512396c",
-      "txHash": "0xdb52c149f8abe468d8ab3aaf0d6e5107fd260cbf9ad67f02243280856188701b",
-      "kind": "transparent"
-    },
-    {
-      "address": "0x60F11BDeBc133082c512Bd24C66c8dfe103A3361",
-      "txHash": "0xd4573c4c05eb23f5ddf57ee2e966639851d9e288d5698b39431923ad060bbdb2",
-      "kind": "transparent"
-    },
-    {
-      "address": "0x65dAe5dF16596bb815a93F4C3E7c0F71a2B4a7E1",
-      "txHash": "0x8eefba1c5652a3d88f0d4413339b306630c04ae10f1ab40071bfda938b3ec5e4",
-      "kind": "transparent"
-    },
-    {
-      "address": "0xEe5661EbB3088dc04274dB688529b8C340EF6AA1",
-      "txHash": "0xd64fe2a386cdc88371f93b78c9bbccd55088f5990ad9e1cbe119a9d7b403972e",
+      "address": "0xdAD1124F462C84DaDb415148cFF3fF04700DfC9D",
+      "txHash": "0x0bd59bef085789fc570a23bd81e320e63392c71045edf4ea83d551f0047bfe6d",
       "kind": "transparent"
     }
   ],
   "impls": {
-    "6d9ea817489d5191b8d99d832f733f8ae5ad5c8789949cccf40a11e19fc47d4a": {
-      "address": "0x8CF0625df85D725af102BafFDd82170a13FBa830",
-      "txHash": "0xa68d94ed16ef7965dbae0abfd11476f334a82115226b9dbf4afa74389b0f9f57",
+    "9a9aca9362501f2ddef01ca87364da8b55d4f0d7a5f5841be656dd911d647132": {
+      "address": "0x73e4773E40aA6f8F55FE4675587b53D3134F75d2",
+      "txHash": "0xaa36f2c7be406d0ddd0dc47a9886135be1210d17e52cf6e8206b74b51e670d3f",
       "layout": {
         "storage": [
           {
@@ -99,7 +79,7 @@
             "slot": "151",
             "type": "t_address",
             "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:66"
+            "src": "contracts/BitCoinDashStaking.sol:44"
           },
           {
             "label": "TreasuryWallet",
@@ -107,7 +87,7 @@
             "slot": "152",
             "type": "t_address_payable",
             "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:68"
+            "src": "contracts/BitCoinDashStaking.sol:46"
           },
           {
             "label": "MarketingWallet",
@@ -115,7 +95,7 @@
             "slot": "153",
             "type": "t_address_payable",
             "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:69"
+            "src": "contracts/BitCoinDashStaking.sol:47"
           },
           {
             "label": "CharityWallet",
@@ -123,7 +103,7 @@
             "slot": "154",
             "type": "t_address_payable",
             "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:70"
+            "src": "contracts/BitCoinDashStaking.sol:48"
           },
           {
             "label": "ChimneyWallet",
@@ -131,7 +111,7 @@
             "slot": "155",
             "type": "t_address_payable",
             "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:71"
+            "src": "contracts/BitCoinDashStaking.sol:49"
           },
           {
             "label": "AdminWallet",
@@ -139,7 +119,7 @@
             "slot": "156",
             "type": "t_address_payable",
             "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:72"
+            "src": "contracts/BitCoinDashStaking.sol:50"
           },
           {
             "label": "LeadersWallet",
@@ -147,23 +127,23 @@
             "slot": "157",
             "type": "t_array(t_address)10_storage",
             "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:73"
+            "src": "contracts/BitCoinDashStaking.sol:51"
           },
           {
             "label": "BITD_TOKEN",
             "offset": 0,
             "slot": "167",
-            "type": "t_contract(IERC20)668",
+            "type": "t_contract(IERC20Upgradeable)380",
             "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:74"
+            "src": "contracts/BitCoinDashStaking.sol:52"
           },
           {
             "label": "UNISWAP_PAIR",
             "offset": 0,
             "slot": "168",
-            "type": "t_contract(IUniswapV2Pair)772",
+            "type": "t_contract(IUniswapV2Pair)920",
             "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:75"
+            "src": "contracts/BitCoinDashStaking.sol:53"
           },
           {
             "label": "REF_BONUSES",
@@ -171,7 +151,7 @@
             "slot": "169",
             "type": "t_array(t_uint8)dyn_storage",
             "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:78"
+            "src": "contracts/BitCoinDashStaking.sol:56"
           },
           {
             "label": "rentMinerFee",
@@ -179,7 +159,7 @@
             "slot": "170",
             "type": "t_uint256",
             "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:86"
+            "src": "contracts/BitCoinDashStaking.sol:64"
           },
           {
             "label": "feedMinerFee",
@@ -187,7 +167,7 @@
             "slot": "171",
             "type": "t_uint256",
             "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:87"
+            "src": "contracts/BitCoinDashStaking.sol:65"
           },
           {
             "label": "priceFeed",
@@ -195,15 +175,15 @@
             "slot": "172",
             "type": "t_contract(AggregatorV3Interface)45",
             "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:96"
+            "src": "contracts/BitCoinDashStaking.sol:72"
           },
           {
             "label": "users",
             "offset": 0,
             "slot": "173",
-            "type": "t_mapping(t_address,t_struct(User)879_storage)",
+            "type": "t_mapping(t_address,t_struct(User)1054_storage)",
             "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:98"
+            "src": "contracts/BitCoinDashStaking.sol:74"
           }
         ],
         "types": {
@@ -219,7 +199,7 @@
             "label": "address[10]",
             "numberOfBytes": "320"
           },
-          "t_array(t_struct(Miner)856_storage)dyn_storage": {
+          "t_array(t_struct(Miner)1031_storage)dyn_storage": {
             "label": "struct BitCoinDashStaking.Miner[]",
             "numberOfBytes": "32"
           },
@@ -247,19 +227,19 @@
             "label": "contract AggregatorV3Interface",
             "numberOfBytes": "20"
           },
-          "t_contract(IERC20)668": {
-            "label": "contract IERC20",
+          "t_contract(IERC20Upgradeable)380": {
+            "label": "contract IERC20Upgradeable",
             "numberOfBytes": "20"
           },
-          "t_contract(IUniswapV2Pair)772": {
+          "t_contract(IUniswapV2Pair)920": {
             "label": "contract IUniswapV2Pair",
             "numberOfBytes": "20"
           },
-          "t_mapping(t_address,t_struct(User)879_storage)": {
+          "t_mapping(t_address,t_struct(User)1054_storage)": {
             "label": "mapping(address => struct BitCoinDashStaking.User)",
             "numberOfBytes": "32"
           },
-          "t_struct(Miner)856_storage": {
+          "t_struct(Miner)1031_storage": {
             "label": "struct BitCoinDashStaking.Miner",
             "members": [
               {
@@ -269,39 +249,33 @@
                 "slot": "0"
               },
               {
-                "label": "dailyReward",
+                "label": "minerLastFed",
                 "type": "t_uint256",
                 "offset": 0,
                 "slot": "1"
               },
               {
-                "label": "minerLastFed",
+                "label": "index",
                 "type": "t_uint256",
                 "offset": 0,
                 "slot": "2"
               },
               {
-                "label": "index",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
                 "label": "miningStatus",
                 "type": "t_bool",
                 "offset": 0,
-                "slot": "4"
+                "slot": "3"
               },
               {
                 "label": "expired",
                 "type": "t_bool",
                 "offset": 1,
-                "slot": "4"
+                "slot": "3"
               }
             ],
-            "numberOfBytes": "160"
+            "numberOfBytes": "128"
           },
-          "t_struct(User)879_storage": {
+          "t_struct(User)1054_storage": {
             "label": "struct BitCoinDashStaking.User",
             "members": [
               {
@@ -348,1367 +322,7 @@
               },
               {
                 "label": "miners",
-                "type": "t_array(t_struct(Miner)856_storage)dyn_storage",
-                "offset": 0,
-                "slot": "7"
-              },
-              {
-                "label": "levels",
-                "type": "t_array(t_uint256)10_storage",
-                "offset": 0,
-                "slot": "8"
-              }
-            ],
-            "numberOfBytes": "576"
-          },
-          "t_uint256": {
-            "label": "uint256",
-            "numberOfBytes": "32"
-          },
-          "t_uint8": {
-            "label": "uint8",
-            "numberOfBytes": "1"
-          }
-        }
-      }
-    },
-    "cebf51de142ffb1b1bb46ef10a696a8d1282f722a382e67b15ef77c9f35fdfdc": {
-      "address": "0x0c711465142C1f9FE4F6F5365Ef7252FE6A06abE",
-      "txHash": "0xe155221ee20d17b8ce3054347c35b8dc26d901a79b78f7b2dc93f6aba592b58a",
-      "layout": {
-        "storage": [
-          {
-            "label": "_initialized",
-            "offset": 0,
-            "slot": "0",
-            "type": "t_bool",
-            "contract": "Initializable",
-            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:39"
-          },
-          {
-            "label": "_initializing",
-            "offset": 1,
-            "slot": "0",
-            "type": "t_bool",
-            "contract": "Initializable",
-            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:44"
-          },
-          {
-            "label": "_status",
-            "offset": 0,
-            "slot": "1",
-            "type": "t_uint256",
-            "contract": "ReentrancyGuardUpgradeable",
-            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:38"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "2",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "ReentrancyGuardUpgradeable",
-            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:74"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "51",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ContextUpgradeable",
-            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
-          },
-          {
-            "label": "_owner",
-            "offset": 0,
-            "slot": "101",
-            "type": "t_address",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "102",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:87"
-          },
-          {
-            "label": "tokenAddress",
-            "offset": 0,
-            "slot": "151",
-            "type": "t_address",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:66"
-          },
-          {
-            "label": "TreasuryWallet",
-            "offset": 0,
-            "slot": "152",
-            "type": "t_address_payable",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:68"
-          },
-          {
-            "label": "MarketingWallet",
-            "offset": 0,
-            "slot": "153",
-            "type": "t_address_payable",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:69"
-          },
-          {
-            "label": "CharityWallet",
-            "offset": 0,
-            "slot": "154",
-            "type": "t_address_payable",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:70"
-          },
-          {
-            "label": "ChimneyWallet",
-            "offset": 0,
-            "slot": "155",
-            "type": "t_address_payable",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:71"
-          },
-          {
-            "label": "AdminWallet",
-            "offset": 0,
-            "slot": "156",
-            "type": "t_address_payable",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:72"
-          },
-          {
-            "label": "LeadersWallet",
-            "offset": 0,
-            "slot": "157",
-            "type": "t_array(t_address)10_storage",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:73"
-          },
-          {
-            "label": "BITD_TOKEN",
-            "offset": 0,
-            "slot": "167",
-            "type": "t_contract(IERC20)668",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:74"
-          },
-          {
-            "label": "UNISWAP_PAIR",
-            "offset": 0,
-            "slot": "168",
-            "type": "t_contract(IUniswapV2Pair)772",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:75"
-          },
-          {
-            "label": "REF_BONUSES",
-            "offset": 0,
-            "slot": "169",
-            "type": "t_array(t_uint8)dyn_storage",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:78"
-          },
-          {
-            "label": "rentMinerFee",
-            "offset": 0,
-            "slot": "170",
-            "type": "t_uint256",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:86"
-          },
-          {
-            "label": "feedMinerFee",
-            "offset": 0,
-            "slot": "171",
-            "type": "t_uint256",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:87"
-          },
-          {
-            "label": "priceFeed",
-            "offset": 0,
-            "slot": "172",
-            "type": "t_contract(AggregatorV3Interface)45",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:96"
-          },
-          {
-            "label": "users",
-            "offset": 0,
-            "slot": "173",
-            "type": "t_mapping(t_address,t_struct(User)879_storage)",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:98"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address",
-            "numberOfBytes": "20"
-          },
-          "t_address_payable": {
-            "label": "address payable",
-            "numberOfBytes": "20"
-          },
-          "t_array(t_address)10_storage": {
-            "label": "address[10]",
-            "numberOfBytes": "320"
-          },
-          "t_array(t_struct(Miner)856_storage)dyn_storage": {
-            "label": "struct BitCoinDashStaking.Miner[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_uint256)10_storage": {
-            "label": "uint256[10]",
-            "numberOfBytes": "320"
-          },
-          "t_array(t_uint256)49_storage": {
-            "label": "uint256[49]",
-            "numberOfBytes": "1568"
-          },
-          "t_array(t_uint256)50_storage": {
-            "label": "uint256[50]",
-            "numberOfBytes": "1600"
-          },
-          "t_array(t_uint8)dyn_storage": {
-            "label": "uint8[]",
-            "numberOfBytes": "32"
-          },
-          "t_bool": {
-            "label": "bool",
-            "numberOfBytes": "1"
-          },
-          "t_contract(AggregatorV3Interface)45": {
-            "label": "contract AggregatorV3Interface",
-            "numberOfBytes": "20"
-          },
-          "t_contract(IERC20)668": {
-            "label": "contract IERC20",
-            "numberOfBytes": "20"
-          },
-          "t_contract(IUniswapV2Pair)772": {
-            "label": "contract IUniswapV2Pair",
-            "numberOfBytes": "20"
-          },
-          "t_mapping(t_address,t_struct(User)879_storage)": {
-            "label": "mapping(address => struct BitCoinDashStaking.User)",
-            "numberOfBytes": "32"
-          },
-          "t_struct(Miner)856_storage": {
-            "label": "struct BitCoinDashStaking.Miner",
-            "members": [
-              {
-                "label": "stakestart",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "dailyReward",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "minerLastFed",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "index",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "miningStatus",
-                "type": "t_bool",
-                "offset": 0,
-                "slot": "4"
-              },
-              {
-                "label": "expired",
-                "type": "t_bool",
-                "offset": 1,
-                "slot": "4"
-              }
-            ],
-            "numberOfBytes": "160"
-          },
-          "t_struct(User)879_storage": {
-            "label": "struct BitCoinDashStaking.User",
-            "members": [
-              {
-                "label": "userAddress",
-                "type": "t_address",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "bonus",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "referrer",
-                "type": "t_address",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "firstDownlineTime",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "lastDownLineTime",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "4"
-              },
-              {
-                "label": "monthlyReferralCount",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "5"
-              },
-              {
-                "label": "bonusFromDirectReferral",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "6"
-              },
-              {
-                "label": "miners",
-                "type": "t_array(t_struct(Miner)856_storage)dyn_storage",
-                "offset": 0,
-                "slot": "7"
-              },
-              {
-                "label": "levels",
-                "type": "t_array(t_uint256)10_storage",
-                "offset": 0,
-                "slot": "8"
-              }
-            ],
-            "numberOfBytes": "576"
-          },
-          "t_uint256": {
-            "label": "uint256",
-            "numberOfBytes": "32"
-          },
-          "t_uint8": {
-            "label": "uint8",
-            "numberOfBytes": "1"
-          }
-        }
-      }
-    },
-    "d7165713dee45b2a9792d67b04cd900e99912e0238bacc2b167026cfb3c612cc": {
-      "address": "0xBEB666e004a126f72b932f5BefEa6944702Fec15",
-      "txHash": "0xc914d5b885ac46343b5306af6ec15277ac1f24796b45c84a40e22e765d0d5513",
-      "layout": {
-        "storage": [
-          {
-            "label": "_initialized",
-            "offset": 0,
-            "slot": "0",
-            "type": "t_bool",
-            "contract": "Initializable",
-            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:39"
-          },
-          {
-            "label": "_initializing",
-            "offset": 1,
-            "slot": "0",
-            "type": "t_bool",
-            "contract": "Initializable",
-            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:44"
-          },
-          {
-            "label": "_status",
-            "offset": 0,
-            "slot": "1",
-            "type": "t_uint256",
-            "contract": "ReentrancyGuardUpgradeable",
-            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:38"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "2",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "ReentrancyGuardUpgradeable",
-            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:74"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "51",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ContextUpgradeable",
-            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
-          },
-          {
-            "label": "_owner",
-            "offset": 0,
-            "slot": "101",
-            "type": "t_address",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "102",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:87"
-          },
-          {
-            "label": "tokenAddress",
-            "offset": 0,
-            "slot": "151",
-            "type": "t_address",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:66"
-          },
-          {
-            "label": "TreasuryWallet",
-            "offset": 0,
-            "slot": "152",
-            "type": "t_address_payable",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:68"
-          },
-          {
-            "label": "MarketingWallet",
-            "offset": 0,
-            "slot": "153",
-            "type": "t_address_payable",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:69"
-          },
-          {
-            "label": "CharityWallet",
-            "offset": 0,
-            "slot": "154",
-            "type": "t_address_payable",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:70"
-          },
-          {
-            "label": "ChimneyWallet",
-            "offset": 0,
-            "slot": "155",
-            "type": "t_address_payable",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:71"
-          },
-          {
-            "label": "AdminWallet",
-            "offset": 0,
-            "slot": "156",
-            "type": "t_address_payable",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:72"
-          },
-          {
-            "label": "LeadersWallet",
-            "offset": 0,
-            "slot": "157",
-            "type": "t_array(t_address)10_storage",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:73"
-          },
-          {
-            "label": "BITD_TOKEN",
-            "offset": 0,
-            "slot": "167",
-            "type": "t_contract(IERC20)668",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:74"
-          },
-          {
-            "label": "UNISWAP_PAIR",
-            "offset": 0,
-            "slot": "168",
-            "type": "t_contract(IUniswapV2Pair)772",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:75"
-          },
-          {
-            "label": "REF_BONUSES",
-            "offset": 0,
-            "slot": "169",
-            "type": "t_array(t_uint8)dyn_storage",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:78"
-          },
-          {
-            "label": "rentMinerFee",
-            "offset": 0,
-            "slot": "170",
-            "type": "t_uint256",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:86"
-          },
-          {
-            "label": "feedMinerFee",
-            "offset": 0,
-            "slot": "171",
-            "type": "t_uint256",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:87"
-          },
-          {
-            "label": "priceFeed",
-            "offset": 0,
-            "slot": "172",
-            "type": "t_contract(AggregatorV3Interface)45",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:96"
-          },
-          {
-            "label": "users",
-            "offset": 0,
-            "slot": "173",
-            "type": "t_mapping(t_address,t_struct(User)879_storage)",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:98"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address",
-            "numberOfBytes": "20"
-          },
-          "t_address_payable": {
-            "label": "address payable",
-            "numberOfBytes": "20"
-          },
-          "t_array(t_address)10_storage": {
-            "label": "address[10]",
-            "numberOfBytes": "320"
-          },
-          "t_array(t_struct(Miner)856_storage)dyn_storage": {
-            "label": "struct BitCoinDashStaking.Miner[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_uint256)10_storage": {
-            "label": "uint256[10]",
-            "numberOfBytes": "320"
-          },
-          "t_array(t_uint256)49_storage": {
-            "label": "uint256[49]",
-            "numberOfBytes": "1568"
-          },
-          "t_array(t_uint256)50_storage": {
-            "label": "uint256[50]",
-            "numberOfBytes": "1600"
-          },
-          "t_array(t_uint8)dyn_storage": {
-            "label": "uint8[]",
-            "numberOfBytes": "32"
-          },
-          "t_bool": {
-            "label": "bool",
-            "numberOfBytes": "1"
-          },
-          "t_contract(AggregatorV3Interface)45": {
-            "label": "contract AggregatorV3Interface",
-            "numberOfBytes": "20"
-          },
-          "t_contract(IERC20)668": {
-            "label": "contract IERC20",
-            "numberOfBytes": "20"
-          },
-          "t_contract(IUniswapV2Pair)772": {
-            "label": "contract IUniswapV2Pair",
-            "numberOfBytes": "20"
-          },
-          "t_mapping(t_address,t_struct(User)879_storage)": {
-            "label": "mapping(address => struct BitCoinDashStaking.User)",
-            "numberOfBytes": "32"
-          },
-          "t_struct(Miner)856_storage": {
-            "label": "struct BitCoinDashStaking.Miner",
-            "members": [
-              {
-                "label": "stakestart",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "dailyReward",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "minerLastFed",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "index",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "miningStatus",
-                "type": "t_bool",
-                "offset": 0,
-                "slot": "4"
-              },
-              {
-                "label": "expired",
-                "type": "t_bool",
-                "offset": 1,
-                "slot": "4"
-              }
-            ],
-            "numberOfBytes": "160"
-          },
-          "t_struct(User)879_storage": {
-            "label": "struct BitCoinDashStaking.User",
-            "members": [
-              {
-                "label": "userAddress",
-                "type": "t_address",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "bonus",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "referrer",
-                "type": "t_address",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "firstDownlineTime",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "lastDownLineTime",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "4"
-              },
-              {
-                "label": "monthlyReferralCount",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "5"
-              },
-              {
-                "label": "bonusFromDirectReferral",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "6"
-              },
-              {
-                "label": "miners",
-                "type": "t_array(t_struct(Miner)856_storage)dyn_storage",
-                "offset": 0,
-                "slot": "7"
-              },
-              {
-                "label": "levels",
-                "type": "t_array(t_uint256)10_storage",
-                "offset": 0,
-                "slot": "8"
-              }
-            ],
-            "numberOfBytes": "576"
-          },
-          "t_uint256": {
-            "label": "uint256",
-            "numberOfBytes": "32"
-          },
-          "t_uint8": {
-            "label": "uint8",
-            "numberOfBytes": "1"
-          }
-        }
-      }
-    },
-    "d73faa0d89482626e2efcb4e9e35ab119a34003ae236477a7133a6636c627826": {
-      "address": "0x19C68755cF47612f32d09ae290CFCc3F163f769c",
-      "txHash": "0x1b6cdf438b0d3ee6d989c4018be85b19f1b92110060ef27d91d2e45e5e693a74",
-      "layout": {
-        "storage": [
-          {
-            "label": "_initialized",
-            "offset": 0,
-            "slot": "0",
-            "type": "t_bool",
-            "contract": "Initializable",
-            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:39"
-          },
-          {
-            "label": "_initializing",
-            "offset": 1,
-            "slot": "0",
-            "type": "t_bool",
-            "contract": "Initializable",
-            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:44"
-          },
-          {
-            "label": "_status",
-            "offset": 0,
-            "slot": "1",
-            "type": "t_uint256",
-            "contract": "ReentrancyGuardUpgradeable",
-            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:38"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "2",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "ReentrancyGuardUpgradeable",
-            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:74"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "51",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ContextUpgradeable",
-            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
-          },
-          {
-            "label": "_owner",
-            "offset": 0,
-            "slot": "101",
-            "type": "t_address",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "102",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:87"
-          },
-          {
-            "label": "tokenAddress",
-            "offset": 0,
-            "slot": "151",
-            "type": "t_address",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:66"
-          },
-          {
-            "label": "TreasuryWallet",
-            "offset": 0,
-            "slot": "152",
-            "type": "t_address_payable",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:68"
-          },
-          {
-            "label": "MarketingWallet",
-            "offset": 0,
-            "slot": "153",
-            "type": "t_address_payable",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:69"
-          },
-          {
-            "label": "CharityWallet",
-            "offset": 0,
-            "slot": "154",
-            "type": "t_address_payable",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:70"
-          },
-          {
-            "label": "ChimneyWallet",
-            "offset": 0,
-            "slot": "155",
-            "type": "t_address_payable",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:71"
-          },
-          {
-            "label": "AdminWallet",
-            "offset": 0,
-            "slot": "156",
-            "type": "t_address_payable",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:72"
-          },
-          {
-            "label": "LeadersWallet",
-            "offset": 0,
-            "slot": "157",
-            "type": "t_array(t_address)10_storage",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:73"
-          },
-          {
-            "label": "BITD_TOKEN",
-            "offset": 0,
-            "slot": "167",
-            "type": "t_contract(IERC20)668",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:74"
-          },
-          {
-            "label": "UNISWAP_PAIR",
-            "offset": 0,
-            "slot": "168",
-            "type": "t_contract(IUniswapV2Pair)772",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:75"
-          },
-          {
-            "label": "REF_BONUSES",
-            "offset": 0,
-            "slot": "169",
-            "type": "t_array(t_uint8)dyn_storage",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:78"
-          },
-          {
-            "label": "rentMinerFee",
-            "offset": 0,
-            "slot": "170",
-            "type": "t_uint256",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:86"
-          },
-          {
-            "label": "feedMinerFee",
-            "offset": 0,
-            "slot": "171",
-            "type": "t_uint256",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:87"
-          },
-          {
-            "label": "priceFeed",
-            "offset": 0,
-            "slot": "172",
-            "type": "t_contract(AggregatorV3Interface)45",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:96"
-          },
-          {
-            "label": "users",
-            "offset": 0,
-            "slot": "173",
-            "type": "t_mapping(t_address,t_struct(User)879_storage)",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:98"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address",
-            "numberOfBytes": "20"
-          },
-          "t_address_payable": {
-            "label": "address payable",
-            "numberOfBytes": "20"
-          },
-          "t_array(t_address)10_storage": {
-            "label": "address[10]",
-            "numberOfBytes": "320"
-          },
-          "t_array(t_struct(Miner)856_storage)dyn_storage": {
-            "label": "struct BitCoinDashStaking.Miner[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_uint256)10_storage": {
-            "label": "uint256[10]",
-            "numberOfBytes": "320"
-          },
-          "t_array(t_uint256)49_storage": {
-            "label": "uint256[49]",
-            "numberOfBytes": "1568"
-          },
-          "t_array(t_uint256)50_storage": {
-            "label": "uint256[50]",
-            "numberOfBytes": "1600"
-          },
-          "t_array(t_uint8)dyn_storage": {
-            "label": "uint8[]",
-            "numberOfBytes": "32"
-          },
-          "t_bool": {
-            "label": "bool",
-            "numberOfBytes": "1"
-          },
-          "t_contract(AggregatorV3Interface)45": {
-            "label": "contract AggregatorV3Interface",
-            "numberOfBytes": "20"
-          },
-          "t_contract(IERC20)668": {
-            "label": "contract IERC20",
-            "numberOfBytes": "20"
-          },
-          "t_contract(IUniswapV2Pair)772": {
-            "label": "contract IUniswapV2Pair",
-            "numberOfBytes": "20"
-          },
-          "t_mapping(t_address,t_struct(User)879_storage)": {
-            "label": "mapping(address => struct BitCoinDashStaking.User)",
-            "numberOfBytes": "32"
-          },
-          "t_struct(Miner)856_storage": {
-            "label": "struct BitCoinDashStaking.Miner",
-            "members": [
-              {
-                "label": "stakestart",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "dailyReward",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "minerLastFed",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "index",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "miningStatus",
-                "type": "t_bool",
-                "offset": 0,
-                "slot": "4"
-              },
-              {
-                "label": "expired",
-                "type": "t_bool",
-                "offset": 1,
-                "slot": "4"
-              }
-            ],
-            "numberOfBytes": "160"
-          },
-          "t_struct(User)879_storage": {
-            "label": "struct BitCoinDashStaking.User",
-            "members": [
-              {
-                "label": "userAddress",
-                "type": "t_address",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "bonus",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "referrer",
-                "type": "t_address",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "firstDownlineTime",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "lastDownLineTime",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "4"
-              },
-              {
-                "label": "monthlyReferralCount",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "5"
-              },
-              {
-                "label": "bonusFromDirectReferral",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "6"
-              },
-              {
-                "label": "miners",
-                "type": "t_array(t_struct(Miner)856_storage)dyn_storage",
-                "offset": 0,
-                "slot": "7"
-              },
-              {
-                "label": "levels",
-                "type": "t_array(t_uint256)10_storage",
-                "offset": 0,
-                "slot": "8"
-              }
-            ],
-            "numberOfBytes": "576"
-          },
-          "t_uint256": {
-            "label": "uint256",
-            "numberOfBytes": "32"
-          },
-          "t_uint8": {
-            "label": "uint8",
-            "numberOfBytes": "1"
-          }
-        }
-      }
-    },
-    "ca9729d1588923393bb0e52bec4fe8412d74beccad86a3cd096fd5394ec87963": {
-      "address": "0xf440CBf2ff3B236e221F745199aC303c657de996",
-      "txHash": "0x68b4c0c02e0ce8fbda4014d0d75a64208fbfd7c38a288f8aaa51e83861ee24ab",
-      "layout": {
-        "storage": [
-          {
-            "label": "_initialized",
-            "offset": 0,
-            "slot": "0",
-            "type": "t_bool",
-            "contract": "Initializable",
-            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:39"
-          },
-          {
-            "label": "_initializing",
-            "offset": 1,
-            "slot": "0",
-            "type": "t_bool",
-            "contract": "Initializable",
-            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:44"
-          },
-          {
-            "label": "_status",
-            "offset": 0,
-            "slot": "1",
-            "type": "t_uint256",
-            "contract": "ReentrancyGuardUpgradeable",
-            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:38"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "2",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "ReentrancyGuardUpgradeable",
-            "src": "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol:74"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "51",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ContextUpgradeable",
-            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
-          },
-          {
-            "label": "_owner",
-            "offset": 0,
-            "slot": "101",
-            "type": "t_address",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "102",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:87"
-          },
-          {
-            "label": "tokenAddress",
-            "offset": 0,
-            "slot": "151",
-            "type": "t_address",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:66"
-          },
-          {
-            "label": "TreasuryWallet",
-            "offset": 0,
-            "slot": "152",
-            "type": "t_address_payable",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:68"
-          },
-          {
-            "label": "MarketingWallet",
-            "offset": 0,
-            "slot": "153",
-            "type": "t_address_payable",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:69"
-          },
-          {
-            "label": "CharityWallet",
-            "offset": 0,
-            "slot": "154",
-            "type": "t_address_payable",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:70"
-          },
-          {
-            "label": "ChimneyWallet",
-            "offset": 0,
-            "slot": "155",
-            "type": "t_address_payable",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:71"
-          },
-          {
-            "label": "AdminWallet",
-            "offset": 0,
-            "slot": "156",
-            "type": "t_address_payable",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:72"
-          },
-          {
-            "label": "LeadersWallet",
-            "offset": 0,
-            "slot": "157",
-            "type": "t_array(t_address)10_storage",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:73"
-          },
-          {
-            "label": "BITD_TOKEN",
-            "offset": 0,
-            "slot": "167",
-            "type": "t_contract(IERC20)668",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:74"
-          },
-          {
-            "label": "UNISWAP_PAIR",
-            "offset": 0,
-            "slot": "168",
-            "type": "t_contract(IUniswapV2Pair)772",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:75"
-          },
-          {
-            "label": "REF_BONUSES",
-            "offset": 0,
-            "slot": "169",
-            "type": "t_array(t_uint8)dyn_storage",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:78"
-          },
-          {
-            "label": "rentMinerFee",
-            "offset": 0,
-            "slot": "170",
-            "type": "t_uint256",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:86"
-          },
-          {
-            "label": "feedMinerFee",
-            "offset": 0,
-            "slot": "171",
-            "type": "t_uint256",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:87"
-          },
-          {
-            "label": "priceFeed",
-            "offset": 0,
-            "slot": "172",
-            "type": "t_contract(AggregatorV3Interface)45",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:96"
-          },
-          {
-            "label": "users",
-            "offset": 0,
-            "slot": "173",
-            "type": "t_mapping(t_address,t_struct(User)879_storage)",
-            "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:98"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address",
-            "numberOfBytes": "20"
-          },
-          "t_address_payable": {
-            "label": "address payable",
-            "numberOfBytes": "20"
-          },
-          "t_array(t_address)10_storage": {
-            "label": "address[10]",
-            "numberOfBytes": "320"
-          },
-          "t_array(t_struct(Miner)856_storage)dyn_storage": {
-            "label": "struct BitCoinDashStaking.Miner[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_uint256)10_storage": {
-            "label": "uint256[10]",
-            "numberOfBytes": "320"
-          },
-          "t_array(t_uint256)49_storage": {
-            "label": "uint256[49]",
-            "numberOfBytes": "1568"
-          },
-          "t_array(t_uint256)50_storage": {
-            "label": "uint256[50]",
-            "numberOfBytes": "1600"
-          },
-          "t_array(t_uint8)dyn_storage": {
-            "label": "uint8[]",
-            "numberOfBytes": "32"
-          },
-          "t_bool": {
-            "label": "bool",
-            "numberOfBytes": "1"
-          },
-          "t_contract(AggregatorV3Interface)45": {
-            "label": "contract AggregatorV3Interface",
-            "numberOfBytes": "20"
-          },
-          "t_contract(IERC20)668": {
-            "label": "contract IERC20",
-            "numberOfBytes": "20"
-          },
-          "t_contract(IUniswapV2Pair)772": {
-            "label": "contract IUniswapV2Pair",
-            "numberOfBytes": "20"
-          },
-          "t_mapping(t_address,t_struct(User)879_storage)": {
-            "label": "mapping(address => struct BitCoinDashStaking.User)",
-            "numberOfBytes": "32"
-          },
-          "t_struct(Miner)856_storage": {
-            "label": "struct BitCoinDashStaking.Miner",
-            "members": [
-              {
-                "label": "stakestart",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "dailyReward",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "minerLastFed",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "index",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "miningStatus",
-                "type": "t_bool",
-                "offset": 0,
-                "slot": "4"
-              },
-              {
-                "label": "expired",
-                "type": "t_bool",
-                "offset": 1,
-                "slot": "4"
-              }
-            ],
-            "numberOfBytes": "160"
-          },
-          "t_struct(User)879_storage": {
-            "label": "struct BitCoinDashStaking.User",
-            "members": [
-              {
-                "label": "userAddress",
-                "type": "t_address",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "bonus",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "referrer",
-                "type": "t_address",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "firstDownlineTime",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "lastDownLineTime",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "4"
-              },
-              {
-                "label": "monthlyReferralCount",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "5"
-              },
-              {
-                "label": "bonusFromDirectReferral",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "6"
-              },
-              {
-                "label": "miners",
-                "type": "t_array(t_struct(Miner)856_storage)dyn_storage",
+                "type": "t_array(t_struct(Miner)1031_storage)dyn_storage",
                 "offset": 0,
                 "slot": "7"
               },

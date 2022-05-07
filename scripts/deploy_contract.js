@@ -24,9 +24,6 @@ async function main() {
        "0x0A0Cfbf38Ca51F39bD6947a0708E1965E6E0f6B8",
        "0x0A0Cfbf38Ca51F39bD6947a0708E1965E6E0f6B8"
     ],
-    100,
-    3
-
     ], {
         initializer: "initialize",
     });
@@ -44,7 +41,8 @@ main();
 //_adminWallet,
 //_leaders address 
            
-//Contract deployed to: 0xEe5661EbB3088dc04274dB688529b8C340EF6AA1
+//Contract deployed to: 0xdAD1124F462C84DaDb415148cFF3fF04700DfC9D
+
 
 
 
