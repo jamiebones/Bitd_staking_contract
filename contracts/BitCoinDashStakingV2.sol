@@ -1,5 +1,5 @@
 //SPDX-License-Identifier: Unlicense
-pragma solidity 0.8.10;
+pragma solidity >=0.8.10;
 
 import "hardhat/console.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
@@ -25,7 +25,7 @@ interface IUniswapV2Pair {
         );
 }
 
-contract BitCoinDashStaking is
+contract BitCoinDashStakingV2 is
     Initializable,
     ReentrancyGuardUpgradeable,
     OwnableUpgradeable
@@ -63,7 +63,7 @@ contract BitCoinDashStaking is
     //mainnet address: 0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE;
     //testnet address: 0x2514895c72f50D8bd4B4F9b1110F0D6bD2c97526;
     address private constant BNB_TO_USD =
-        0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE;
+        0x2514895c72f50D8bd4B4F9b1110F0D6bD2c97526;
 
     AggregatorV3Interface internal priceFeed;
 
@@ -622,6 +622,17 @@ contract BitCoinDashStaking is
     receive() external payable {}
 }
 
+//how to get the pair address from uniswap
+// address factory = 0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f;
+// address token0 = 0xCAFE000000000000000000000000000000000000; // change me!
+// address token1 = 0xF00D000000000000000000000000000000000000; // change me!
+
+// address pair = address(uint(keccak256(abi.encodePacked(
+//   hex'ff',
+//   factory,
+//   keccak256(abi.encodePacked(token0, token1)),
+//   hex'96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f'
+// ))));
 
 //MAINNET
 //Pancake swap factory: 0xca143ce32fe78f1f7019d7d551a6402fc5350c73
@@ -635,3 +646,16 @@ contract BitCoinDashStaking is
 //pair address: 0x86eD77B4e86E6E6835f969563FbA8cE8E5a4fEFa
 //factory address: 0xB7926C0430Afb07AA7DEfDE6DA862aE0Bde767bc
 
+//47392942112850 / 1e9 = 47,392.94211285 token
+//2343682108450432795 / 1e18 = 2.343682108450432795 bnb
+
+//wbnb / token = 0.00004945213367150238
+
+//49,452,133,671,502.38
+
+//38,200,000,000
+
+//token -> 11180262490499 / 1e9 = 11,180.262490499
+//wbnb -> 559229606710777545 /1e18 = 0.559229606710777545 bnb
+
+//result wbnb / token = 0.00005001936288937862 * 1e18 = 50,019,362,889,378.62

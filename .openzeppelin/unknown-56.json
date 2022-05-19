@@ -1,20 +1,20 @@
 {
   "manifestVersion": "3.2",
   "admin": {
-    "address": "0x05688451b7dA2b32c79C0bc6F9018220666c9B1C",
-    "txHash": "0xd23bd0aacfb48a0498fd7f6687b3f0272254c8b8ce925e41f198bff10a7c43e3"
+    "address": "0xeB1F85B8bc1694Dc74789A744078D358cb88117f",
+    "txHash": "0x51b0c6113b3e9fd9ee2bf67ad9444419d24ebc6c3e821f414001716674cfc6bc"
   },
   "proxies": [
     {
-      "address": "0xdAD1124F462C84DaDb415148cFF3fF04700DfC9D",
-      "txHash": "0x0bd59bef085789fc570a23bd81e320e63392c71045edf4ea83d551f0047bfe6d",
+      "address": "0xE3987eA63Cc5Abc229891Df4aCf1624c51e08815",
+      "txHash": "0x4c9ad685eb5f2061066595943aeea1a07956d7cfbb93b14e5ebe8c5a7a5fe386",
       "kind": "transparent"
     }
   ],
   "impls": {
-    "9a9aca9362501f2ddef01ca87364da8b55d4f0d7a5f5841be656dd911d647132": {
-      "address": "0x73e4773E40aA6f8F55FE4675587b53D3134F75d2",
-      "txHash": "0xaa36f2c7be406d0ddd0dc47a9886135be1210d17e52cf6e8206b74b51e670d3f",
+    "84bd2d8c84a3f41b549b3df3af9a05be3272c472126da2d86a172a1f458279b0": {
+      "address": "0xC3368b9c8f2272C49eb091Ba1114abBc8a180dF4",
+      "txHash": "0x10dabb99cd7d142a3e2f2187b9e0976eab9119ca5ec8e6ed3b333c9d3ab7a23a",
       "layout": {
         "storage": [
           {
@@ -79,7 +79,7 @@
             "slot": "151",
             "type": "t_address",
             "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:44"
+            "src": "contracts/BitCoinDashStaking.sol:40"
           },
           {
             "label": "TreasuryWallet",
@@ -87,7 +87,7 @@
             "slot": "152",
             "type": "t_address_payable",
             "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:46"
+            "src": "contracts/BitCoinDashStaking.sol:42"
           },
           {
             "label": "MarketingWallet",
@@ -95,7 +95,7 @@
             "slot": "153",
             "type": "t_address_payable",
             "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:47"
+            "src": "contracts/BitCoinDashStaking.sol:43"
           },
           {
             "label": "CharityWallet",
@@ -103,7 +103,7 @@
             "slot": "154",
             "type": "t_address_payable",
             "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:48"
+            "src": "contracts/BitCoinDashStaking.sol:44"
           },
           {
             "label": "ChimneyWallet",
@@ -111,7 +111,7 @@
             "slot": "155",
             "type": "t_address_payable",
             "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:49"
+            "src": "contracts/BitCoinDashStaking.sol:45"
           },
           {
             "label": "AdminWallet",
@@ -119,7 +119,7 @@
             "slot": "156",
             "type": "t_address_payable",
             "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:50"
+            "src": "contracts/BitCoinDashStaking.sol:46"
           },
           {
             "label": "LeadersWallet",
@@ -127,7 +127,7 @@
             "slot": "157",
             "type": "t_array(t_address)10_storage",
             "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:51"
+            "src": "contracts/BitCoinDashStaking.sol:47"
           },
           {
             "label": "BITD_TOKEN",
@@ -135,7 +135,7 @@
             "slot": "167",
             "type": "t_contract(IERC20Upgradeable)380",
             "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:52"
+            "src": "contracts/BitCoinDashStaking.sol:48"
           },
           {
             "label": "UNISWAP_PAIR",
@@ -143,7 +143,7 @@
             "slot": "168",
             "type": "t_contract(IUniswapV2Pair)920",
             "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:53"
+            "src": "contracts/BitCoinDashStaking.sol:49"
           },
           {
             "label": "REF_BONUSES",
@@ -151,7 +151,7 @@
             "slot": "169",
             "type": "t_array(t_uint8)dyn_storage",
             "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:56"
+            "src": "contracts/BitCoinDashStaking.sol:52"
           },
           {
             "label": "rentMinerFee",
@@ -159,7 +159,7 @@
             "slot": "170",
             "type": "t_uint256",
             "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:64"
+            "src": "contracts/BitCoinDashStaking.sol:59"
           },
           {
             "label": "feedMinerFee",
@@ -167,23 +167,31 @@
             "slot": "171",
             "type": "t_uint256",
             "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:65"
+            "src": "contracts/BitCoinDashStaking.sol:60"
+          },
+          {
+            "label": "dailyPercentage",
+            "offset": 0,
+            "slot": "172",
+            "type": "t_uint256",
+            "contract": "BitCoinDashStaking",
+            "src": "contracts/BitCoinDashStaking.sol:61"
           },
           {
             "label": "priceFeed",
             "offset": 0,
-            "slot": "172",
+            "slot": "173",
             "type": "t_contract(AggregatorV3Interface)45",
             "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:72"
+            "src": "contracts/BitCoinDashStaking.sol:68"
           },
           {
             "label": "users",
             "offset": 0,
-            "slot": "173",
-            "type": "t_mapping(t_address,t_struct(User)1054_storage)",
+            "slot": "174",
+            "type": "t_mapping(t_address,t_struct(User)1058_storage)",
             "contract": "BitCoinDashStaking",
-            "src": "contracts/BitCoinDashStaking.sol:74"
+            "src": "contracts/BitCoinDashStaking.sol:70"
           }
         ],
         "types": {
@@ -199,7 +207,7 @@
             "label": "address[10]",
             "numberOfBytes": "320"
           },
-          "t_array(t_struct(Miner)1031_storage)dyn_storage": {
+          "t_array(t_struct(Miner)1035_storage)dyn_storage": {
             "label": "struct BitCoinDashStaking.Miner[]",
             "numberOfBytes": "32"
           },
@@ -235,11 +243,11 @@
             "label": "contract IUniswapV2Pair",
             "numberOfBytes": "20"
           },
-          "t_mapping(t_address,t_struct(User)1054_storage)": {
+          "t_mapping(t_address,t_struct(User)1058_storage)": {
             "label": "mapping(address => struct BitCoinDashStaking.User)",
             "numberOfBytes": "32"
           },
-          "t_struct(Miner)1031_storage": {
+          "t_struct(Miner)1035_storage": {
             "label": "struct BitCoinDashStaking.Miner",
             "members": [
               {
@@ -255,27 +263,45 @@
                 "slot": "1"
               },
               {
-                "label": "index",
+                "label": "lastWithdrawal",
                 "type": "t_uint256",
                 "offset": 0,
                 "slot": "2"
               },
               {
+                "label": "index",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "rentFee",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "4"
+              },
+              {
+                "label": "dailyPercent",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "5"
+              },
+              {
                 "label": "miningStatus",
                 "type": "t_bool",
                 "offset": 0,
-                "slot": "3"
+                "slot": "6"
               },
               {
                 "label": "expired",
                 "type": "t_bool",
                 "offset": 1,
-                "slot": "3"
+                "slot": "6"
               }
             ],
-            "numberOfBytes": "128"
+            "numberOfBytes": "224"
           },
-          "t_struct(User)1054_storage": {
+          "t_struct(User)1058_storage": {
             "label": "struct BitCoinDashStaking.User",
             "members": [
               {
@@ -322,7 +348,7 @@
               },
               {
                 "label": "miners",
-                "type": "t_array(t_struct(Miner)1031_storage)dyn_storage",
+                "type": "t_array(t_struct(Miner)1035_storage)dyn_storage",
                 "offset": 0,
                 "slot": "7"
               },

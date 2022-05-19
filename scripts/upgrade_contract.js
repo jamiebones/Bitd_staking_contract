@@ -1,12 +1,13 @@
 const { ethers, upgrades } = require("hardhat");
 
-const PROXY = "0xaf03a6F46Eea7386F3E5481a4756efC678a624e6";
+const PROXY = "0xf12dA725562413727f033004181621d55435Fc5e";
 
 async function main() {
-    const CalculatorV2 = await ethers.getContractFactory("CalculatorV2");
-    console.log("Upgrading Calculator...");
-    await upgrades.upgradeProxy(PROXY, CalculatorV2);
-    console.log("Calculator upgraded");
+    const BitCoinDashStakingV2 = await ethers.getContractFactory("BitCoinDashStakingV2");
+  
+    console.log("Upgrading BitCoinDashStaking...");
+    await upgrades.upgradeProxy(PROXY, BitCoinDashStakingV2);
+    console.log("BitCoinDashStaking upgraded.....");
 }
 
 main();

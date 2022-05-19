@@ -8,6 +8,7 @@
     "deploy_contract": "hardhat run --network rinkeby scripts/deploy_contract.js",
     "upgrade_contract": "hardhat run --network rinkeby scripts/upgrade_contract.js",
     "deploy_test": "hardhat run --network bscTestnet scripts/deploy_contract.js",
+    "upgrade_test": "hardhat run --network bscTestnet scripts/upgrade_contract.js",
     "deploy_local": "hardhat run --network localhost scripts/deploy_contract.js",
     "deploy_main": "hardhat run --network bscMainnet scripts/deploy_contract.js"
   },
